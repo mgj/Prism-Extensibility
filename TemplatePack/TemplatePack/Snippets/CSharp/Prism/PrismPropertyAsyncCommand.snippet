@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets
+    xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Prism Async DelegateCommand</Title>
+      <Shortcut>cmdasync</Shortcut>
+      <Author>Mikkel Jensen</Author>
+      <Description>Creates an async DelegateCommand property</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>fieldName</ID>
+          <ToolTip>Replace with the field name</ToolTip>
+          <Default>fieldName</Default>
+        </Literal>
+        <Literal>
+          <ID>CommandName</ID>
+          <ToolTip>Replace with the command name</ToolTip>
+          <Default>CommandName</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp">
+        <![CDATA[private DelegateCommand $fieldName$Command;
+        public DelegateCommand $CommandName$Command
+        {
+            get
+            {
+                $fieldName$Command = $fieldName$Command ?? new DelegateCommand(async () => await Do$CommandName$Command()).ObservesCanExecute(() => CanExecute$CommandName$Command);
+                return $fieldName$Command;
+            }
+        }
+
+        private bool _canExecute$CommandName$Command = true;
+        public bool CanExecute$CommandName$Command
+        {
+            get { return _canExecute$CommandName$Command; }
+            set { SetProperty(ref _canExecute$CommandName$Command, value); }
+        }
+
+        private async Task Do$CommandName$Command()
+        {
+        }
+        $end$]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
